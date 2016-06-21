@@ -218,7 +218,7 @@ FUNCTION {format.names}
 { 's := 
   #1 'nameptr := 
   #3 'max.num.names.before.forced.et.al := 
-  #3 'num.names.shown.with.forced.et.al := 
+  #1 'num.names.shown.with.forced.et.al := 
   s num.names$ 'numnames := 
   numnames 'namesleft := 
     { namesleft #0 > } 
