@@ -3,7 +3,7 @@
 \usepackage{txfonts} % makes spacing between characters space correctly
 \usepackage{xcolor} % Driver-independent color extensions for LaTeX and pdfLaTeX.
 \usepackage{hyperref}  %The ability to create hyperlinks within the document
-
+\usepackage{multicol}
 \usepackage{fancyhdr} % header footer placement
 
 \usepackage[top=1in, bottom=1in, left=1in, right=1in] {geometry} % Margins
@@ -342,9 +342,13 @@ Simulations of ccSNe \MarginPar{Bronson}
 
 %-----------------------------------------------------------------------------
 \input readiness
-\bibliographystyle{unsrtnat}
-\bibliography{refs}
 
+%-----------------------------------------------------------------------------
+
+\bibliographystyle{unsrtnat}
+%\begin{multicols}{2}
+\bibliography{refs}
+%\end{multicols}
 
 
 
