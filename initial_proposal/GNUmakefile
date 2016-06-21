@@ -17,16 +17,14 @@ EPSs := $(wildcard *.eps)
 ALL: $(PDFs) merged.pdf
 
 
-narrative.pdf: narrative.tex $(SOURCES) $(PNGs) $(EPSs) refs.bib newcommands.tex
+%.pdf: %.tex $(SOURCES) $(PNGs) $(EPSs) refs.bib newcommands.tex
 	pdflatex $<
-	bibtex narrative
+	@if [ "$(shell ack -l bibliography $<)" != "" ]; then \
+	  bibtex $(basename $<) ; \
+	fi
 	pdflatex $<
 	pdflatex $<
 
-%.pdf: %.tex
-	pdflatex $<
-	pdflatex $<
-	pdflatex $<
 
 merged.pdf: $(PDFs)
 	gs -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=merged.pdf -dBATCH $(PDFs) $(wildcard CVs/*.pdf)
