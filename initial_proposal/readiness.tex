@@ -348,7 +348,7 @@ to make effective use of titan's queue system.
 
 \subsection{Developmental Work}
 
-\MarginPar{need Tom, Adam, and Max to discuss GPU microphysics, Max for GPU hydro, Brian for GPU MG, Weiqun for tiling}
+\MarginPar{need Tom, Adam, and Max to discuss GPU microphysics, Max for GPU hydro, Weiqun for tiling}
 
 Both \maestro\ and \castro\ already scale well on titan and are
 capable of running the proposed science.  Nevertheless, we are
@@ -484,6 +484,28 @@ codes to avoid expensive EOS calls~\cite{colellaglaz:1985}, and improve our ther
 consistency.
 
 \MarginPar{Add discussion of multifab colors for MGFLD}
+
+Scaling geometric multigrid (GMG) algorithms on GPUs is a high priority for
+both \castro\ and \maestro, both of which use \boxlib's Fortran 90-based GMG
+solver. The massive parallelism on GPUs amplifies the scalability challenges
+which GMG algorithms already face on current multi-core architectures,
+particularly with regard to load imbalance at coarse levels of the multigrid
+hierarchy. Happily, our integration of the emerging benchmark GMG code HPGMG\footnote{\url{https://hpgmg.org/}}
+as a drop-in replacement solver in the \boxlib\ framework has provided a
+possible solution to this problem. Recently, NVIDIA ported HPGMG to CUDA\footnote{\url{https://devblogs.nvidia.com/parallelforall/high-performance-geometric-multi-grid-gpu-acceleration/}},
+exploiting the Unified Memory feature introduced in CUDA 6, which simplifies
+data synchronization between host and GPU memory. They pursued a ``hybrid''
+CUDA implementation, in which relaxations at coarse levels with small grids
+execute on the CPU, while those at the fine levels with large grids execute on
+the GPU. They tuned empirically the grid size threshold which decides whether a
+relaxation will take place on the host or the GPU, and found that they could
+accelerate the GMG code by a factor of 4 over the pure-CPU version of HPGMG.
+
+We will leverage this knowledge to explore similar implementations in \boxlib.
+Although \boxlib's GMG solvers are more general-purpose than HPGMG (e.g., they
+support mixed boundary conditions, refined meshes, arbitrarily shaped
+rectangular grids, cell-centered and nodal meshes, etc.), the heart of NVIDIA's
+hybrid approach to GPU acceleration would benefit our in-house solvers as well.
 
 A major goal of the united effort represented by this INCITE proposal \MarginPar{new}
 is to create a single set of microphysics solvers (burners and EOSes)
