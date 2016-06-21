@@ -27,7 +27,7 @@ ALL: $(PDFs) merged.pdf
 
 
 merged.pdf: $(PDFs)
-	gs -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=merged.pdf -dBATCH $(PDFs) $(wildcard ../CVs/*.pdf)
+	gs -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=merged.pdf -dBATCH $(PDFs) $(filter-out ../CVs/CV_template.pdf, $(wildcard ../CVs/*.pdf))
 	@echo 
 	@echo a merged PDF of all the proposal material is available as merged.pdf
 
