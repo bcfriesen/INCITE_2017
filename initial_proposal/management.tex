@@ -25,19 +25,6 @@
 \titleformat*{\subsubsection}{\itshape}
 
 
-\let\oldthebibliography=\thebibliography
-  \let\endoldthebibliography=\endthebibliography
-  \renewenvironment{thebibliography}[1]{%
-    \begin{oldthebibliography}{#1}%
-      \setlength{\parskip}{0.25ex}% 
-      \setlength{\itemsep}{0.25ex}% 
-  }%
-  {% 
-    \end{oldthebibliography}% 
-  }
-
-
-
 \usepackage{caption}
 \captionsetup{labelsep=period}
 
