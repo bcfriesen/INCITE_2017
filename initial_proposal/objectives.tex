@@ -2,11 +2,8 @@ As described above, we plan a suite of comprehensive simulations of a
 large variety of stellar explosions: core-collapse and Type Ia
 supernovae, XRBs, and the curious black widow pulsars.  Our simulation
 codes are well-matched to these studies.  
-
-
-XRBs and SNe Ia (both the sub-Ch and WDWD models) using our
-codes \maestro\ and \castro.  All the problems we
-describe are inherently three-dimensional, requiring large resources.
+All the problems we
+describe are inherently 3D, requiring large resources.
 Our codes are running on titan today, and they perform and scale
 well.  The starting point for all the simulations proposed are in
 place.  We are ready to run.
@@ -121,8 +118,12 @@ amenible to detonation.  Again, the GPUs will be needed here to allow
 for this new physics.  In later years, we will explore more realistic
 models from the MESA stellar evolution code (along the lines of those
 reported in~\cite{brooks:2015}).  A final effort will be to carry the
-convective calculations into the explosive phase.  Initially,
-standalone calculations will be done using \flash\MarginPar{Tom
+convective calculations into the explosive phase. Initially, calculations
+of this phase will be performed using FLASH. Our recent work installing 
+XNet into FLASH will allow us to promptly investigate the effects of 
+using improved nuclear kinetics in sub-Ch SNe Ia simulations, such as 
+the role of proton-catalyzed alpha captures during the He detonation 
+(Shen \& Moore 2014). \flash\MarginPar{Tom
   comment}.  By year 3, we will also use the ``end-to-end'' capability
 of \maestro-to-\castro~\cite{Mal14} to follow the evolution from
 convection onto explosion for some promising models.  This will be the
@@ -170,7 +171,7 @@ a relatively high base density for the H/He layer ($2\times
 affords us the ability to compare to the 1D stellar evolution models
 to understand how the accurate 3D treatment of convection alters the
 dynamics.  We will also explore a large domain size---currently we
-model 31~m laterally on the neutron star surface---we'd like to
+model 31~m laterally on the NS surface---we'd like to
 explore a size closer to 50~m to see the development of more
 convective cells.  These will give a clear picture of the dynamics of
 the convection and allow us to answer the questions posed in the
@@ -237,12 +238,10 @@ time for these models.
 
 \paragraph{Exploratory simulations: }
 %
-We are
-capable of modeling all phases of these explosive phenomena.  As a
-result, when a new idea is promoted in the field, we will be in an
-excellent position to explore it through detailed high-resolution
-simulation.  We will keep pace with the field and propose some add-on
-calculations in later year renewals. 
+We are able to model all phases of these explosive phenomena, and will
+keep pace with developments in the field.  We will use a small amount
+of time each year to explore related phenomena, adding promising
+calculations to later-year renewals.
 
 
 
