@@ -360,6 +360,26 @@ continually working on the performance of these codes, and in
 particular, in the last year have been actively targeting titan and
 its GPUs.  Our graduate students have been the lead on this effort.
 
+As part of our ongoing CAAR project, we recently added the capability to evolve nuclear reaction networks of arbitrary sizes into the FLASH code. It is important to note, however, that the computational expense to evolve such reaction networks increases as (at least) the number of species squared. In order to ameliorate part of this increased expense, we added OpenMP threading (within blocks) to the burning module. Figure \ref{fig:speedup_flash} shows $\sim$8$\times$ speedup when using this OpenMP version of the burner with 16 threads (relative to no threading) and an additional 2$\times$ speedup from improved load balancing. We also developed a version of the burner that targets the GPUs on Titan through the use of batch cuBLAS library routines in addition to OpenMP threading. Figure \ref{fig:compare_burning_module} shows a comparison of the two versions of the burning module, where the GPU-enhanced version shows an additional 20-30\% speedup relative to the OpenMP version at most epochs of the simulation. Relative to no threading, this gives a total speedup of $\sim$18$\times$.
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.48\linewidth]{speedup_OpenMP.eps}
+\begin{minipage}[b]{0.5\linewidth}
+\caption{\label{fig:speedup_flash} Results from simulating a central detonation of a sub-Ch C/O white dwarf using the OpenMP version of the burning module with and without improved load balancing. These results were obtained by running for 20 hydrodynamic timesteps starting 0.6s after ignition.}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.48\linewidth]{compare_burning_module.eps}
+\begin{minipage}[b]{0.5\linewidth}
+\caption{\label{fig:compare_burning_module} Comparison of the OpenMP and GPU-enhanced versions of the burning module, showing the time spent in the burning module over 20 hydrodynamic timesteps at different epochs of a central WD detonation.}
+\end{minipage}
+\end{figure}
+
+
 Future work includes a rewrite of the top-level of the hydrodynamics modules in FLASH Ð both split and unsplit Ð to move their execution to the GPUs and the implementation of \flash\'s existing zoomed grid method on the GPU. The XNet GPU enhancements enabled under our associated CAAR project will also be fully integrated into \chimera\ during the period of this allocation. 
 
 
