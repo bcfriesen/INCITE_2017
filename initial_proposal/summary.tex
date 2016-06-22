@@ -42,9 +42,9 @@ A.~Nonaka, T.~Papatheodore, \& W.~Zhang %\smallskip
 
 \textbf{Applying Institution/Organization}: Stony Brook University %\smallskip
 
-\textbf{Number of Processor Hours Requested}: 80 Mh (year 1), 111 Mh (year 2), 122 Mh (year 3) %\smallskip
+\textbf{Number of Processor Hours Requested}: 120 Mh (year 1), 140 Mh (year 2), 160 Mh (year 3) %\smallskip
 
-\textbf{Amount of Storage Requested}: 800 TB (year 1), 900 TB (year 2), 1 PB (year 3) \MarginPar{needs updating}
+\textbf{Amount of Storage Requested}: 800 TB (year 1), 900 TB (year 2), 1 PB (year 3) \MarginPar{needs updating; BM - I guessed at allocations}
 
 \end{flushleft}
 %
@@ -60,7 +60,7 @@ A.~Nonaka, T.~Papatheodore, \& W.~Zhang %\smallskip
 stellar explosions using a suite of state-of-the-art application
 codes.  We will explore multiple progenitor models of Type Ia
 supernovae (SNe Ia), the physics of X-ray bursts (XRBs), the radiative
-ablation in black widow pulsars (BWP), and core-collapse supernovae.
+ablation in black widow pulsars (BWP), and core-collapse supernovae (CCSNe).
 Our code suite already runs on titan at OLCF, and through this
 proposal, we will unify our efforts at utilizing the GPUs for
 accelerating the microphysics.
@@ -82,10 +82,17 @@ to analyze the simulations.  Finally, both codes are available to the
 public, and performance (or physics) improvements developed in the
 course of the proposed work will be made available to the community.
 
-The ccSNe simulations will utilitize \chimera\ \MarginPar{Bronson add a few sentences here}
+The CCSNe simulations will utilize \chimera\
+ to attack the decades-old computational challenge of simulating these stellar explosions. We will perform well-resolved, symmetry-free, three-dimensional (3D) simulations with sufficient physical detail required to understand these complex stellar explosions and their observable products.These simulations will cover the lower end of the range of massive stars, from oxygen-neon-core stars on the lightest end (about nine solar masses), up to the 
+ least massive iron-core stars ($\sim$12 solar masses).
+ \chimera\  contains all of the relevant physics required for core-collapse supernova simulations including transport of energy by 
+ neutrinos and the required neutrino–matter interactions, general relativity and self-gravity, nuclear burning and nuclear equations of state, and three-dimensional fluid dynamics. \chimera\
+ has been developed and used in INCITE projects on OLCF resources for much of the last decade. 
 
 Finally, some of the explosion calculations for sub-Chandra SNe Ia
-will utilitze \flash.
+will utilize \flash. In particular, we will use new accelerated network capabilities in \flash\ developed under the aegis of our
+associated CAAR project at OLCF to investigate the impact of large network evaluation on the requisite 
+size and conditions for double-detonation SNe Ia. 
 
 A common theme in our simulations is the expense of the microphysics,
 in particular nuclear reaction networks.  All of our calculations
