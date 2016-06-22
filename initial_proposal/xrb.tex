@@ -17,26 +17,27 @@ the NS, modulated by the fast rotation.
 Before the actual outburst, the burning at the base of the ignition
 column will drive convection throughout the overlying layers and set
 the state of the material in which the burning front will propagate.
-1D simulations of XRBs usually attempt to parametrize the convective
-overturn and mixing using astrophysical mixing-length theory or
-through various diffusive processes.  A proper treatment of the
-convection in these extreme conditions, free from parameterizations,
-requires 3D simulations.  In our current INCITE allocation, we
-performed the first ever calculation of convective with resolved
-burning in a mixed H/He layer on a NS surface~\cite{xrb-3d}.  3D is
-expensive, restricting us to small domains to resolve the burning
-processes and small reaction networks to fit the model in memory.  In
-the proposed work, we will build upon these first calculations,
-pushing to bigger domains and more realistic physics---the computing
-power for this can only be provided through INCITE.
+%% 1D simulations of XRBs usually attempt to parametrize the
+%% convective overturn and mixing using astrophysical mixing-length
+%% theory or through various diffusive processes.
+A proper treatment of the convection in these extreme conditions, free
+from parameterizations, requires 3D simulations.  In our current
+INCITE allocation, we performed the first ever calculation of
+convective with resolved burning in a mixed H/He layer on a NS
+surface~\cite{xrb-3d}.  3D is expensive, restricting us to small
+domains to resolve the burning processes and small reaction networks
+to fit the model in memory.  In the proposed work, we will build upon
+these first calculations, pushing to bigger domains and more realistic
+physics---the computing power for this can only be provided through
+INCITE.
 
 Recently, other groups have begun modeling the spreading of a flame
 through a NS atmosphere in 2D, using a simplified hydrodynamics code
 that only solves the dynamics in the lateral direction and enforces
 hydrostatic equilibrium vertically~\cite{cavecchi:2013}.  This allows
-for wide-aspect ratio zones that enable a large timestep.  However,
-this cannot resolve the dynamics at the burning front, in particular
-the effects of turbulence on the flame propagation.  We will perform
-our own studies of the lateral flame propagation with full
-hydrodynamics in the proposed period.
+for wide-aspect ratio zones that enable a large timestep, but cannot
+resolve the dynamics at the burning front, in particular the effects
+of turbulence on the flame propagation.  We will perform our own
+studies of the lateral flame propagation with full hydrodynamics in
+the proposed period.
 
