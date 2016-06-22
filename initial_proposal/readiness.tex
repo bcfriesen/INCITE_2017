@@ -342,8 +342,12 @@ We directly measured the time to output from
 ranging from 4--12 GB/s.  We note that I/O takes less than 1\% of our
 runtime, and it will not be an issue for the proposed runs.
 As \castro\ uses a similar I/O strategy, we expect it to attain the
-same performance.  All of our codes have checkpoint/restart capability 
+same performance.    \chimera\ uses a custom, tunable, multi-file, parallel HDF I/O module to 
+acheive I/O performance that takes no more than 2\% of runtime at 131000 cores on Titan. The \flash\ I/O benchmark (derived directly from the 
+ORNL version of the code) is a standard benchmark in the OLCF testing harness, which is run intermittently to ensure performance of the
+Atlas file system at OLCF.  All of our codes have checkpoint/restart capability 
 to make effective use of titan's queue system.
+
 
 
 \subsection{Developmental Work}
@@ -355,6 +359,10 @@ capable of running the proposed science.  Nevertheless, we are
 continually working on the performance of these codes, and in
 particular, in the last year have been actively targeting titan and
 its GPUs.  Our graduate students have been the lead on this effort.
+
+Future work includes a rewrite of the top-level of the hydrodynamics modules in FLASH Ð both split and unsplit Ð to move their execution to the GPUs and the implementation of \flash\'s existing zoomed grid method on the GPU. The XNet GPU enhancements enabled under our associated CAAR project will also be fully integrated into \chimera\ during the period of this allocation. 
+
+
 
 %% For the computational approach above, describe what, if any,
 %% development work has been carried out to date, especially on the
