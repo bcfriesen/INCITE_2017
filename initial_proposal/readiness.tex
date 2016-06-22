@@ -221,18 +221,22 @@ will store output in single precision to conserve space.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.49\linewidth]{titan_xrb_scaling}
-\includegraphics[width=0.49\linewidth]{edison-wdmerger-scaling.eps}
-\caption{\label{fig:scaling} (top left) \maestro\ strong scaling for
-  the XRB problem.  Two problem sizes are shown.  In each case, the
-  time to advance the solution is the average of 10 steps.  Comparing
-  the two problem sizes shows the weak scaling.  The turn-up at the
-  highest core count for each problem size is NUMA-related---going
-  from 1 MPI task per socket to 1 MPI task per node (right)
-  \castro\ strong scaling for the initial (non-interacting) stage of
-  the WDWD problem, run on the NERSC Edison machine.  This solves the
-  full Poisson problem using multigrid with isolated boundary
-  conditions.}
+\includegraphics[width=0.49\linewidth]{edison-wdmerger-scaling.eps} \\
+\includegraphics[width=0.4\linewidth]{speedup}
+\begin{minipage}[b]{0.55\linewidth}
+\caption{\label{fig:scaling} (top left) \maestro\ XRB strong
+  scaling---two problem sizes are shown.  In each case, the time to
+  advance the solution is the average of 10 steps.  Comparing the two
+  problem sizes shows the weak scaling.  The turn-up at the highest
+  core count for each problem size is NUMA-related---going from 1 MPI
+  task per socket to 1 MPI task per node (top right) \castro\ strong
+  scaling for the initial WDWD problem,
+  run on the NERSC Edison machine.  This solves the full Poisson
+  problem using multigrid with isolated boundary conditions. (left)
+  Speed-up plot for the \maestro\ and \castro\ strong scaling data.}
+\end{minipage}
 \end{figure}
+
 
 %% In year 1, the majority of our jobs will use \maestro, so we focused in
 %% detail in obtaining real-world scaling numbers on titan for the main
@@ -261,16 +265,6 @@ problem shows that \maestro\ is reaching up to effective use of 20\%
 of the machine.  Oue largest XRB runs will be atleast as large as the
 large domain studied here.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.48\linewidth]{speedup}
-\begin{minipage}[b]{0.5\linewidth}
-\caption{\label{fig:speedup} Speed-up plot for the \maestro\
-and \castro\ strong scaling data.  For the \maestro\ runs,
-we only show the $48^3$ grid case using all CPUs on a compute
-unit (-j 2)}
-\end{minipage}
-\end{figure}
 
 The low Mach number constraint in imposed through a divergence
 constraint on the velocity field.
