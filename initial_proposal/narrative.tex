@@ -90,11 +90,11 @@ with \castro, and ccSNe will be studied using \chimera.  All
 calculations will be 3D and face the challenges of capturing the
 effects of turbulence, instabilities, strong gravitational
 interactions, nuclear reactions, and radiation.  These challenges make
-these problems INCITE-class, and only the resouces titan can provide
+these problems INCITE-class, and only the resources Titan can provide
 will enable use to further our understanding.  Despite the broad suite
 of codes, there are common links, namely in the microphysics
 (reactions, equations of state) and in our shared approach to
-utilitizing the GPUs on titan.  This collaboration is an expansion of
+utilitizing the GPUs on Titan.  This collaboration is an expansion of
 our existing INCITE proposal, but we believe that it represents the
 most efficient use of resources, allowing us to work together as a
 team to create portable solvers to effectively make use of this
@@ -159,7 +159,7 @@ their adaptive mesh refinement (AMR) grid hierarchy.  This makes it
 straightforward to transition a problem from \maestro\ to \castro, as
 was done during our previous INCITE allocation when studying flame
 propagation in Chandra model SNe Ia~\cite{Mal14}.  Both codes are
-already up and running on our target platform, titan (OLCF).
+already up and running on our target platform, Titan (OLCF).
 Additionally, both codes are publicly available%
 \footnote{https://github.com/BoxLib-Codes}---any performance or
 physics improvements developed under this INCITE award will become
@@ -172,15 +172,18 @@ of sub-Ch SNe Ia.  \MarginPar{Tom edit}
 
 \paragraph{\chimera}
 %
-\chimera\ will be used to model ccSNe.  \MarginPar{Bronson edit}
+\chimera\ will be used to model ccSNe.  
+\chimera\ uses a directionally-split piecewise parabolic method (PPM) to solve the hydrodynamics. Self-gravity is computed via multipole expansion in spherical harmonics.The incorporated nuclear network, XNet, solves a system of coupled non-linear ODEs for the time evolution of the nuclear abundances independently for each zone. We also advect passive Lagrangian tracer particles through our simulation as data samplers to use in post-processing nucleosynthesis and other analyses. Transport of neutrinos is computed as multi-(energy)-group angular moments of the neutrino distribution function in a diffusive approximation flux-limited to prevent superluminal `diffusion' of neutrinos in semi-transparent and transparent regions (multi-group flux-limited diffusion, or MGFLD). 
+Additional details about the architecture of \chimera\ can be found in \citep{brmehi09,Messeretal2012GPU}. A recent enhancement to \chimera\ for 3D has been the introduction of a Yin-Yang grid \citep{KageSato2004}, and 2 full-star 3D simulations are currently underway using this code as part of an associated PRAC allocation at Blue Waters. 
 
 \subsection{Work under previous INCITE awards}
 
 We are currently in the last year of a 2-year INCITE award at the OLCF
 (AST106; PI: Zingale), focused on XRBs and SNe Ia.  Many of the
 current investigators have also collaborated on previous INCITE
-awards.  \MarginPar{Bronson: add a paragraph on accomplishments with
-  DD time below}
+awards. 
+The work on CCSNe proposed here follows work with \chimera\ under two previous INCITE awards (AST005 [2008-10; 2011-2013]  A. Mezzacappa, PI).  It also follows closely on the heels of a recent ALCC award (NPH108, B. Messer, PI) where we have performed studies 
+of 3D turbulence in realistic CCSNe environments in an attempt to quantify the requisite spatial resolution. 
 
 \paragraph{\maestro\ sub-Ch convection models.}
 %
@@ -223,7 +226,11 @@ and some branches to the rp-process.  We demonstrated that the
 convective layer becomes turbulent with a cascade that matches
 Kolmogorov isotropic turbulence.
 
+\paragraph{\chimera\ 3D CCSNe simulations.}
 
+In 2013-2014, INCITE supported our pioneering efforts to run a single 3D, non-axisymmetric model with \chimera\. We evolved the simulation through 440~ms after core bounce.
+The onset of explosion (shock revival) is delayed by $\sim$100~ms in 3D relative to the 2D counterpart and the growth of the diagnostic explosion energy is slower. Our results suggest
+ that shock revival and explosion in the 3D simulation may be delayed until sufficiently large plumes form, whereas such plumes form more rapidly in 2D, permitting earlier explosions.
 
 \paragraph{GPU work.}
 %
@@ -241,7 +248,11 @@ high-order integrators working on the GPUs, including a production unit test
 demonstrating a 2x speedup versus perfect OpenMP (16 threads).  Our collaboration
 with OLCF continues, Co-I Jacobs will be traveling to OLCF next week
 to work on profiling on the GPUs to understand branching issues and
-further the optimization.
+further the optimization.  In addition, our development of \flash\ for GPU architectures is 
+directly supported by a CAAR award at OLCF. This work has already produced a 18x speedup 
+on Titan versus the previous unthreaded burning module in \flash\, making large network
+runs with the code possible. Importantly, {\it exactly} the same network is used in \chimera\ as well, 
+in direct support of our simulation target for CCSNe in this proposal. 
 
 \subsection{Significance of our proposed work}
 
@@ -319,7 +330,9 @@ beyond the resolutions of previous grid-based simulations.  Our
 \castro\ investigations~\cite{katz:2016}  achieve the highest
 resolution every used by grid-based codes.  
 
-Simulations of ccSNe \MarginPar{Bronson}
+In CCSNe, the character of both the Stationary Accretion Shock Instability (SASI) and neutrino-driven convection in 2D CCSNe simulations are different than 3D. The nature of the buoyant engine, including its viability, are unknown for symmetry-free 3D configurations across the initial mass function. The SASI is confined to the sloshing mode by axisymmetry and turbulent convection develops unrealistically large and strong convective rolls, both of which may work to reinforce the other and result in more stable accretion streams and a strong buoyant engine. 
+Some recent simulations using highly simplified neutrino treatments have suggested that the third dimension is the key to more robust explosions, while other similar simulations have shown the opposite. Our recent 3D simulations \citep{lentzetal2015}  include  fully consistent coupling of neutrinos and the stellar fluid, allowing us to determine how 3D impacts the nature and strength of the CCSN mechanism. We wish to explore the lower mass range of the possible set of progenitors for CCSNe in this proposal. Interestingly, CCSNe progenitors in the mass range below about 11 solar masses may well rely on significant nuclear burning during collapse and shock propagation. These conditions are another excellent candidate for out large-network technology in \chimera.
+
 
 
 %-----------------------------------------------------------------------------
